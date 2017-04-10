@@ -149,6 +149,8 @@
     <ClInclude Include="EV_ReceiveAck.hpp" />
     <ClInclude Include="EV_ReceiveData.hpp" />
     <ClInclude Include="EV_ReceiveLastData.hpp" />
+    <ClInclude Include="EV_ReceiveRRQ.hpp" />
+    <ClInclude Include="EV_ReceiveWRQ.hpp" />
     <ClInclude Include="EV_SendAck.hpp" />
     <ClInclude Include="EV_SendData.hpp" />
     <ClInclude Include="EV_SendLastData.hpp" />
@@ -157,29 +159,42 @@
     <ClInclude Include="GenericFSM.hpp" />
     <ClInclude Include="GenericState.hpp" />
     <ClInclude Include="Screen.hpp" />
+    <ClInclude Include="Server.hpp" />
     <ClInclude Include="ST_Idle.hpp" />
-    <ClInclude Include="ST_ReceiveAck.hpp" />
     <ClInclude Include="ST_ReceiveData.hpp" />
     <ClInclude Include="ST_ReceiveDataAck.hpp" />
     <ClInclude Include="ST_ReceiveFirstData.hpp" />
     <ClInclude Include="ST_ReceiveLastDataAck.hpp" />
     <ClInclude Include="ST_ReceiveWRQAck.hpp" />
+    <ClInclude Include="ST_SendAck.hpp" />
     <ClInclude Include="ST_SendData.hpp" />
     <ClInclude Include="ST_SendDataAck.hpp" />
     <ClInclude Include="ST_SendLastDataAck.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GenericFSM.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="ST_Idle.cpp" />
     <ClCompile Include="ST_ReceiveData.cpp" />
     <ClCompile Include="ST_ReceiveDataAck.cpp" />
     <ClCompile Include="ST_ReceiveFirstData.cpp" />
     <ClCompile Include="ST_ReceiveLastDataAck.cpp" />
+    <ClCompile Include="ST_SendAck.cpp" />
     <ClCompile Include="ST_SendData.cpp" />
     <ClCompile Include="ST_SendDataAck.cpp" />
     <ClCompile Include="ST_SendLastDataAck.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\pdcurses_vc120.3.4.0.3\build\native\pdcurses_vc120.targets" Condition="Exists('..\packages\pdcurses_vc120.3.4.0.3\build\native\pdcurses_vc120.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\pdcurses_vc120.3.4.0.3\build\native\pdcurses_vc120.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\pdcurses_vc120.3.4.0.3\build\native\pdcurses_vc120.targets'))" />
+  </Target>
 </Project>

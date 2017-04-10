@@ -8,6 +8,8 @@
 class ST_Idle:public genericState
 {
 public:
+	genericState* on_ReceiveWRQ(genericEvent *ev);
+	genericState* on_ReceiveRRQ(genericEvent *ev);
 	genericState* on_SendWRQ(genericEvent *ev);
 	genericState* on_SendRRQ(genericEvent *ev);
 };

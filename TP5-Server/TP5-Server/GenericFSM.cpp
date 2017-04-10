@@ -6,19 +6,22 @@ void genericFSM::Dispatch(genericEvent *ev)
 
 	switch (ev->getEventType())
 	{
-	case S_WRQ:
-		newState = currentState->on_SendWRQ(ev);
+	case R_WRQ:
+		newState = currentState->on_ReceiveWRQ(ev);
 		break;
-	case S_RRQ:
-		newState = currentState->on_SendRRQ(ev);
+	case R_RRQ:
+		newState = currentState->on_ReceiveRRQ(ev);
 		break;
 	case S_ACK:
+		newState->lastEvent = S_ACK;
 		newState = currentState->on_SendAck(ev);
 		break;
 	case S_DATA:
+		newState->lastEvent = S_DATA;
 		newState = currentState->on_SendData(ev);
 		break;
 	case S_LAST_DATA:
+		newState->lastEvent = S_LAST_DATA;
 		newState = currentState->on_SendLastData(ev);
 		break;
 	case R_ACK:

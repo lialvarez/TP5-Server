@@ -51,9 +51,6 @@
     <ClInclude Include="ST_Idle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ST_ReceiveAck.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ST_ReceiveData.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +73,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ST_SendLastDataAck.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EV_ReceiveRRQ.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EV_ReceiveWRQ.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ST_SendAck.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,5 +116,14 @@
     <ClCompile Include="ST_SendLastDataAck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ST_SendAck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

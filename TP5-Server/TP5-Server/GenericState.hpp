@@ -5,12 +5,16 @@
 #include "genericEvent.hpp"
 #include <string>
 
+using namespace std;
+
 class genericState
 {
 public:
 
 	virtual genericState* on_SendWRQ(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_SendRRQ(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_ReceiveWRQ(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_ReceiveRRQ(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_ReceiveWRQAck(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_SendData(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_ReceiveData(genericEvent* ev) { return nullptr; }
@@ -20,11 +24,10 @@ public:
 	virtual genericState* on_ReceiveLastData(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_timeout(genericEvent* ev) { return nullptr; }
 
+	event_t lastEvent;
 	string executedAction;
 
 protected:
-
-	event_t lastEvent;
 
 };
 
