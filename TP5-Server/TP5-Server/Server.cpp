@@ -47,15 +47,15 @@ genericEvent* Server::eventGenerator()
 			return ((genericEvent *) new (EV_ReceiveRRQ));;
 			break;
 		case 'e':
-			receivedEvent = "Send DATA";
+			receivedEvent = "Send Data";
 			return ((genericEvent *) new (EV_SendData));;
 			break;
 		case 'y':
-			receivedEvent = "Send LAST DATA";
+			receivedEvent = "Send Last Data";
 			return ((genericEvent *) new (EV_SendLastData));
 			break;
 		case 'q':
-			receivedEvent = "Send ACK";
+			receivedEvent = "Send Ack.";
 			return ((genericEvent *) new (EV_SendAck));;
 			break;
 		case 'a':

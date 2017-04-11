@@ -20,7 +20,7 @@ genericState* ST_ReceiveDataAck :: on_ReceiveAck(genericEvent* ev)
 genericState* ST_ReceiveDataAck :: on_timeout(genericEvent* ev)
 {
 	genericState *ret = (genericState*) new ST_ReceiveDataAck();
-	ret->executedAction = "N/A";
+	ret->executedAction = "Data Resent";
     return ret;
 };
 

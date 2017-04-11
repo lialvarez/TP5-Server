@@ -13,7 +13,7 @@ ST_ReceiveFirstData::ST_ReceiveFirstData()
 genericState* ST_ReceiveFirstData :: on_timeout(genericEvent* ev)
 {
 	genericState *ret = (genericState*) new ST_ReceiveFirstData();
-	ret->executedAction = "N/A";
+	ret->executedAction = "Ack. Resent";
     return ret;
 };
 genericState* ST_ReceiveFirstData :: on_ReceiveData(genericEvent* ev)

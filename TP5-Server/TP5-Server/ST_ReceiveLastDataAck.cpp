@@ -19,7 +19,7 @@ genericState* ST_ReceiveLastDataAck :: on_ReceiveAck(genericEvent* ev)
 genericState* ST_ReceiveLastDataAck :: on_timeout(genericEvent* ev)
 {
 	genericState *ret = (genericState*) new ST_ReceiveLastDataAck();
-	ret->executedAction = "N/A";
+	ret->executedAction = "Last Data Resent";
     return ret;
 };
 

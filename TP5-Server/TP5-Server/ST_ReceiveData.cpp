@@ -14,7 +14,7 @@ ST_ReceiveData::ST_ReceiveData()
 genericState* ST_ReceiveData :: on_timeout(genericEvent* ev)
 {
 	genericState *ret = (genericState*) new ST_ReceiveData();
-	ret->executedAction = "N/A";
+	ret->executedAction = "Ack. Resent";
 	return ret;
 };
 
