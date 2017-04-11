@@ -21,30 +21,29 @@ void main()
 
 	Server server;
 	genericFSM FSM;
-	genericEvent *ev = nullptr;
+	genericEvent *ev = nullptr; //Variable que va a apuntar evento recibido
 
-	server.startScreen();														//Seteo pantalla inicial//
+	server.startScreen();		//Seteo pantalla inicial
 	do 
 	{
-		server.setCurrentState(FSM.getCurrentState()->currentState);
-		refreshScreen(server);
+		server.setCurrentState(FSM.getCurrentState()->currentState);    //actualizar el estado actual en el server
+		refreshScreen(server);          //mostrar la info actual del server en la pantalla
 
-		ev = server.eventGenerator();
-		FSM.Dispatch(ev);
+		ev = server.eventGenerator();   //obtener el evento
+		FSM.Dispatch(ev);               //realizar las acciones correspondientes, y de ser necesario, cambiar de estado actual
 
-		refreshScreen(server);
-		Sleep(1000);
+		refreshScreen(server);          //mostrar la info actual del server en pantalla
+		Sleep(1000);                    //dejar un segundo d eintervalo para poder ver los cambios en la info del server
 
-		server.setExecutedAction((FSM.getCurrentState())->executedAction);
-		refreshScreen(server);
-		Sleep(1000);
+		server.setExecutedAction((FSM.getCurrentState())->executedAction);  //cargar la rutina de ccion correspondiente
+		refreshScreen(server);          //mostrar la info actual del server en pantalla
+		Sleep(2000);                    // dejar un segundo de intervalo para poder ver los cambios en la info del server
 
 		server.setExecutedAction("N/A");
 		server.setLastEvent(server.getReceivedevent());
 		server.setReceivedEvent("Esperando EVENTO");
-		Sleep(1000);
 
-	} while ((FSM.getCurrentState())->getLastEvent() != CLOSE_SERVER);
+	} while ((FSM.getCurrentState())->getLastEvent() != CLOSE_SERVER);  //cuando se recibe el evento CLOSE_SERVER, salir
 	Sleep(2000);
 }
 
@@ -74,11 +73,3 @@ void refreshScreen(Server server)
 
 	refresh();
 }
-
-/* 
- Che pregunta. que pasa si yo soy servere en rrq y mande el last data ack? si vuelvo a idle al toque, nunca me voy a enterar
- si el servidor quizas no le llego mi ack y me reenvia su last data. Importa? porque yo tengo todos los datos que queria, pero
- el servidor no sabe eso. PARA REFLEXIONAR NOSIERTO?
- */
-
-/* Che pregunta 2. timeout es un evento que se envia a mano? no hace falta poner un timer que controle, no? */

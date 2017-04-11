@@ -13,6 +13,8 @@
 #include "EV_ReceiveError.hpp"
 #include "EV_CloseServer.hpp"
 
+#define ESC 27
+
 Server::Server()
 {
 	receivedEvent = "Esperando EVENTO";
@@ -23,22 +25,21 @@ Server::Server()
 
 genericEvent* Server::eventGenerator()
 {
-	char c;
-	nodelay(winTest, true);
-	noecho();
+    char c;                 //variable que contiene a la tecla presionada
+    nodelay(winTest, true); //establece el modo no bloqueante de lectura de teclado
+    noecho();               //permite presionar teclas sin generar cambios en la pantalla
 
 	do
 	{
-		c = getch();
+		c = getch();        //devuelve ERR cuando no se apreta ninguna tecla
 		c = tolower(c);
-		if (c == 27)
-		{
-			receivedEvent = "Close Server";
-			return ((genericEvent *) new (EV_CloseServer));
-		}
-		switch (c)
-		{
-		case 'w':
+        switch (c)
+        {
+        case ESC:
+            receivedEvent = "Close Server";
+            return ((genericEvent*) new (EV_CloseServer));
+            break;
+        case 'w':
 			receivedEvent = "WRQ";
 			return ((genericEvent *) new (EV_ReceiveWRQ));
 			break;
@@ -82,13 +83,14 @@ genericEvent* Server::eventGenerator()
 			receivedEvent = "Error";
 			return ((genericEvent*) new (EV_ReceiveError));
 			break;
-		default:
+		default:    //si se apreto alguna tecla no mapeada, indicar que debe seguir leyendo el teclado
 			c = ERR;
 			break;
 		}
-	} while (c == ERR);
+	} while (c == ERR); //dejar de leer el teclado ua vez que se aprete una tecla valida
 }
 
+//SETTERS
 void Server::setReceivedEvent(string receivedEvent)
 {
 	this->receivedEvent = receivedEvent;
@@ -109,6 +111,7 @@ void Server::setCurrentState(string currentState)
 	this->currentState = currentState;
 }
 
+//GETTERS
 string Server::getCurrentState()
 {
 	return currentState;
@@ -129,7 +132,7 @@ string Server::getReceivedevent()
 	return receivedEvent;
 }
 
-//GRAFICA LA PANTALLA INICIAL CORRESPONDIENTE A LA SIMULACION DEL CLIENTE//
+//GRAFICA LA PANTALLA INICIAL CORRESPONDIENTE A LA SIMULACION DEL SERVER//
 void Server::startScreen()
 {
 	curs_set(0);

@@ -6,15 +6,19 @@
 #include <vector>
 #include "curses.h"
 
-#define FIRSTLINE 11
-#define INTERSPACING 2
+#define FIRSTLINE 11    //primera linea del listado de eventos
+#define INTERSPACING 2  //separacion utilizada en varias secciones de la pantalla
 #define LEFTMARGIN1 1
 #define LEFTMARGIN2 45
 #define LEFTMARGIN3 70
 
 using namespace std;
 
-
+/* Clase Server:
+ * Contiene la funcion eventGenerator() encargada de tomar los eventos de teclado
+ * Contiene strings que guardan la informacion del evento recibido, el ultimo evento recibido, la accion
+ * ejecutada, y el estado actual.
+ */
 class Server
 {
 public:

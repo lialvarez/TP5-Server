@@ -7,10 +7,16 @@ genericFSM::genericFSM()
 	printf("Ejecuta el constructor\n");
 }
 
+genericFSM::~genericFSM()
+{
+    delete currentState;
+}
+
 void genericFSM::Dispatch(genericEvent *ev)
 {
 	genericState *newState = nullptr;
-
+    
+    //lamar a la funcion del estado actual correspondiente al evento recibido
 	switch (ev->getEventType())
 	{
 	case R_WRQ:
@@ -52,7 +58,7 @@ void genericFSM::Dispatch(genericEvent *ev)
 	default:
 		break;
 	}
-	if (newState != nullptr)
+	if (newState != nullptr)    //si se apreto una tecla correspondiente a un evento
 	{
 		delete currentState;
 		currentState = newState;

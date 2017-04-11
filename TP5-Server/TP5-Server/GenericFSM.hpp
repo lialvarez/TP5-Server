@@ -10,9 +10,10 @@ class genericFSM
 {
 public:
 
-	genericFSM();
+	genericFSM();   //Crea un estado al que apunta currentState
+    ~genericFSM();  //Destruye el estado al que punta currentState
 
-	void Dispatch(genericEvent* ev);
+	void Dispatch(genericEvent* ev);    //llama a la funcion del estado al que apunta current state que responde al evento recibido
 	genericState* getCurrentState();
 protected:
 	genericState* currentState;
