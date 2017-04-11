@@ -1,29 +1,39 @@
-#include <stdio.h>
 #include "ST_Idle.hpp"
-#include "ST_SendAck.hpp"
+#include "ST_SendWRQAck.hpp"
 #include "ST_SendData.hpp"
-#include "ST_ReceiveWRQAck.hpp"
-#include "ST_ReceiveFirstData.hpp"
 
 using namespace std;
 
+ST_Idle::ST_Idle()
+{
+	currentState = "Idle";
+}
+
 genericState* ST_Idle::on_ReceiveWRQ(genericEvent *ev)
 {
-	return ((genericState*) new ST_SendAck());
+	genericState *ret = (genericState*) new ST_SendWRQAck();
+	ret->executedAction = "N/A";
+	return ret;
 };
+
 genericState* ST_Idle::on_ReceiveRRQ(genericEvent *ev)
 {
-    return ((genericState*) new ST_SendData());
+	genericState *ret = (genericState*) new ST_SendData();
+	ret->executedAction = "N/A";
+	return ret;
 };
 
-genericState* ST_Idle::on_SendWRQ(genericEvent *ev)
+genericState* ST_Idle::on_ReceiveError(genericEvent* ev)
 {
-	executedAction = "WRQ Sent";
-	return ((genericState*) new ST_ReceiveWRQAck());
-};
+	genericState *ret = (genericState*) new ST_Idle();
+	ret->executedAction = "Error Received, Server Restarted";
+	return ret;
+}
 
-genericState* ST_Idle::on_SendRRQ(genericEvent *ev)
+genericState* ST_Idle::on_CloseServer(genericEvent* ev)
 {
-	executedAction = "RRQ Sent";
-	return ((genericState*) new ST_ReceiveFirstData());
-};
+	genericState *ret = (genericState*) new ST_Idle();
+	ret->executedAction = "Server Closed";
+	ret->setLastEvent(CLOSE_SERVER);
+	return ret;
+}

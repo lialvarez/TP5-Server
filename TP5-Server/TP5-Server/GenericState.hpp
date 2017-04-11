@@ -2,8 +2,8 @@
 #define GENERIC_STATE_H
 
 #include <iostream>
-#include "genericEvent.hpp"
 #include <string>
+#include "genericEvent.hpp"
 
 using namespace std;
 
@@ -23,11 +23,20 @@ public:
 	virtual genericState* on_SendLastData(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_ReceiveLastData(genericEvent* ev) { return nullptr; }
 	virtual genericState* on_timeout(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_SendError(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_ReceiveError(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_Reset(genericEvent* ev) { return nullptr; }
+	virtual genericState* on_CloseServer(genericEvent* ev) { return nullptr; }
 
-	event_t lastEvent;
+	event_t getLastEvent() { return lastEvent; }
+	void setLastEvent(event_t lastEvent) { this->lastEvent = lastEvent; }
+
 	string executedAction;
+	string currentState;
 
 protected:
+
+	event_t lastEvent;
 
 };
 

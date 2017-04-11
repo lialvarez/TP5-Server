@@ -93,6 +93,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\lisan\Source\Repos\TP5-Server\TP5-Server\TP5-Server</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,46 +148,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="curses.h" />
+    <ClInclude Include="EV_CloseServer.hpp" />
     <ClInclude Include="EV_ReceiveAck.hpp" />
     <ClInclude Include="EV_ReceiveData.hpp" />
+    <ClInclude Include="EV_ReceiveError.hpp" />
     <ClInclude Include="EV_ReceiveLastData.hpp" />
     <ClInclude Include="EV_ReceiveRRQ.hpp" />
     <ClInclude Include="EV_ReceiveWRQ.hpp" />
     <ClInclude Include="EV_SendAck.hpp" />
     <ClInclude Include="EV_SendData.hpp" />
+    <ClInclude Include="EV_SendError.hpp" />
     <ClInclude Include="EV_SendLastData.hpp" />
     <ClInclude Include="EV_Timeout.hpp" />
     <ClInclude Include="genericEvent.hpp" />
     <ClInclude Include="GenericFSM.hpp" />
     <ClInclude Include="GenericState.hpp" />
-    <ClInclude Include="Screen.hpp" />
+    <ClInclude Include="panel.h" />
     <ClInclude Include="Server.hpp" />
+    <ClInclude Include="ST_Error.hpp" />
     <ClInclude Include="ST_Idle.hpp" />
     <ClInclude Include="ST_ReceiveData.hpp" />
     <ClInclude Include="ST_ReceiveDataAck.hpp" />
     <ClInclude Include="ST_ReceiveFirstData.hpp" />
     <ClInclude Include="ST_ReceiveLastDataAck.hpp" />
-    <ClInclude Include="ST_ReceiveWRQAck.hpp" />
-    <ClInclude Include="ST_SendAck.hpp" />
     <ClInclude Include="ST_SendData.hpp" />
     <ClInclude Include="ST_SendDataAck.hpp" />
     <ClInclude Include="ST_SendLastDataAck.hpp" />
+    <ClInclude Include="ST_SendWRQAck.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GenericFSM.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Server.cpp" />
     <ClCompile Include="ST_Idle.cpp" />
     <ClCompile Include="ST_ReceiveData.cpp" />
     <ClCompile Include="ST_ReceiveDataAck.cpp" />
     <ClCompile Include="ST_ReceiveFirstData.cpp" />
     <ClCompile Include="ST_ReceiveLastDataAck.cpp" />
-    <ClCompile Include="ST_SendAck.cpp" />
     <ClCompile Include="ST_SendData.cpp" />
     <ClCompile Include="ST_SendDataAck.cpp" />
     <ClCompile Include="ST_SendLastDataAck.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="ST_SendWRQAck.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,36 +1,41 @@
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
-#include "genericEvent.hpp"
+#include "genericState.hpp"
 #include <string>
-#include <curses.h>
+#include <vector>
+#include "curses.h"
 
 using namespace std;
+
+
 
 class Server
 {
 public:
 	Server();
 
-	genericEvent *eventGenerator();
+	genericEvent* eventGenerator();
 	void setReceivedEvent(string receivedEvent);
 	void setLastEvent(string lastEvent);
 	void setExecutedAction(string executedAction);
+	void setCurrentState(string currentState);
 	void startScreen(void);
 
+	string getCurrentState();
 	string getReceivedevent();
 	string getLastEvent();
 	string getExecutedAction();
 
-protected:
+
+private:
+
 
 	string receivedEvent;
 	string lastEvent;
 	string executedAction;
+	string currentState;
 	WINDOW * winTest;
 
 };
-
 #endif // !SERVER_HPP
-
-

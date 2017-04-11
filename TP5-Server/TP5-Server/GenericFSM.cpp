@@ -1,8 +1,15 @@
 #include "genericFSM.hpp"
+#include "ST_Idle.hpp"
+
+genericFSM::genericFSM()
+{
+	currentState = (genericState *) new ST_Idle();
+	printf("Ejecuta el constructor\n");
+}
 
 void genericFSM::Dispatch(genericEvent *ev)
 {
-	genericState *newState;
+	genericState *newState = nullptr;
 
 	switch (ev->getEventType())
 	{
@@ -13,15 +20,12 @@ void genericFSM::Dispatch(genericEvent *ev)
 		newState = currentState->on_ReceiveRRQ(ev);
 		break;
 	case S_ACK:
-		newState->lastEvent = S_ACK;
 		newState = currentState->on_SendAck(ev);
 		break;
 	case S_DATA:
-		newState->lastEvent = S_DATA;
 		newState = currentState->on_SendData(ev);
 		break;
 	case S_LAST_DATA:
-		newState->lastEvent = S_LAST_DATA;
 		newState = currentState->on_SendLastData(ev);
 		break;
 	case R_ACK:
@@ -35,6 +39,15 @@ void genericFSM::Dispatch(genericEvent *ev)
 		break;
 	case R_TIMEOUT:
 		newState = currentState->on_timeout(ev);
+		break;
+	case R_ERROR:
+		newState = currentState->on_ReceiveError(ev);
+		break;
+	case S_ERROR:
+		newState = currentState->on_SendError(ev);
+		break;
+	case CLOSE_SERVER:
+		newState = currentState->on_CloseServer(ev);
 		break;
 	default:
 		break;

@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include "genericEvent.hpp"
 #include "genericState.hpp"
-#include "Screen.hpp"
+
 
 class genericFSM
 {
 public:
+
+	genericFSM();
+
 	void Dispatch(genericEvent* ev);
 	genericState* getCurrentState();
 protected:

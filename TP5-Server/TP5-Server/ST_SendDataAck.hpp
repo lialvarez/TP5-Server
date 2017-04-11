@@ -6,6 +6,10 @@
 class ST_SendDataAck : public genericState
 {
 public:
+
+	ST_SendDataAck();
+
 	genericState* on_SendAck(genericEvent* ev);
+	genericState* on_SendError(genericEvent* ev);
 };
 #endif // !ST_S_DATA_ACK_HPP

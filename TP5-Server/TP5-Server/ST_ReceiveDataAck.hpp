@@ -6,8 +6,12 @@
 class ST_ReceiveDataAck:public genericState
 {
 public:
+
+	ST_ReceiveDataAck();
+
 	genericState* on_ReceiveAck(genericEvent* ev);
 	genericState* on_timeout(genericEvent* ev);
+	genericState* on_ReceiveError(genericEvent* ev);
 };
 
 

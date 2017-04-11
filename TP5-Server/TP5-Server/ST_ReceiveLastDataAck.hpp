@@ -6,8 +6,12 @@
 class ST_ReceiveLastDataAck : public genericState
 {
 public:
+
+	ST_ReceiveLastDataAck();
+
 	genericState* on_ReceiveAck(genericEvent* ev);
 	genericState* on_timeout(genericEvent* ev);
+	genericState* on_ReceiveError(genericEvent* ev);
 };
 
 
