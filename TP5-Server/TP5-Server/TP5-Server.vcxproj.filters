@@ -21,6 +21,9 @@
     <ClInclude Include="curses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EV_CloseServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="EV_ReceiveAck.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,45 +99,42 @@
     <ClInclude Include="ST_SendWRQAck.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EV_CloseServer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GenericFSM.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Server.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_Idle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_ReceiveData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_ReceiveDataAck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_ReceiveFirstData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_ReceiveLastDataAck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_SendData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ST_SendDataAck.cpp">
+    <ClCompile Include="ST_SendWRQAck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ST_SendLastDataAck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ST_SendWRQAck.cpp">
+    <ClCompile Include="ST_SendDataAck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_SendData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_ReceiveLastDataAck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_ReceiveFirstData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_ReceiveDataAck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_ReceiveData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ST_Idle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericFSM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
