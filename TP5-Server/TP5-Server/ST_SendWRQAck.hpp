@@ -11,8 +11,7 @@ public:
 
 	genericState* on_SendAck(genericEvent* ev);
 	genericState* on_SendError(genericEvent* ev);
-
-private:
+	genericState* on_CloseServer(genericEvent* ev);
 
 };
 

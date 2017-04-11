@@ -32,4 +32,11 @@ genericState* ST_SendData::on_SendError(genericEvent* ev)
 	return ret;
 }
 
+genericState* ST_SendData::on_CloseServer(genericEvent* ev)
+{
+	genericState *ret = (genericState*) new ST_Idle();
+	ret->executedAction = "Server Closed";
+	ret->setLastEvent(CLOSE_SERVER);
+	return ret;
+}
 

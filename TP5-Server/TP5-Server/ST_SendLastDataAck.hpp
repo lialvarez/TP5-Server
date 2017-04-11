@@ -11,7 +11,7 @@ public:
 
 	genericState* on_SendAck(genericEvent* ev);
 	genericState* on_SendError(genericEvent* ev);
-
+	genericState* on_CloseServer(genericEvent* ev);
 };
 
 #endif // !ST_S_LAST_DATA_ACK_HPP

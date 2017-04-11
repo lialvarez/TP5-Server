@@ -23,3 +23,11 @@ genericState* ST_SendDataAck::on_SendError(genericEvent* ev)
 	ret->executedAction = "Error Sent, Server Restarted";
 	return ret;
 }
+
+genericState* ST_SendDataAck::on_CloseServer(genericEvent* ev)
+{
+	genericState *ret = (genericState*) new ST_Idle();
+	ret->executedAction = "Server Closed";
+	ret->setLastEvent(CLOSE_SERVER);
+	return ret;
+}

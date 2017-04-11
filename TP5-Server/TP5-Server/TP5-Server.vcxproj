@@ -169,7 +169,6 @@
     <ClInclude Include="GenericState.hpp" />
     <ClInclude Include="panel.h" />
     <ClInclude Include="Server.hpp" />
-    <ClInclude Include="ST_Error.hpp" />
     <ClInclude Include="ST_Idle.hpp" />
     <ClInclude Include="ST_ReceiveData.hpp" />
     <ClInclude Include="ST_ReceiveDataAck.hpp" />
