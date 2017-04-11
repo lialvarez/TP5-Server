@@ -18,7 +18,7 @@ Server::Server()
 	receivedEvent = "Esperando EVENTO";
 	lastEvent = "N/A";
 	executedAction = "N/A";
-	WINDOW * winTest = initscr();
+	winTest = initscr();
 }
 
 genericEvent* Server::eventGenerator()
@@ -134,44 +134,63 @@ void Server::startScreen()
 {
 	curs_set(0);
 	char *Events[30] = { "W = WRQ","R = RRQ","E = Send Data","Y = Send Last Data","Q = Send Ack.","Z = Send Error", "A = Ack","D = Data","S = Last Data","T = Timeout", "X = Error", "ESC = Close Server" };
-	char *fsmStates[30] = { "Evento Recibido: ","Ultimo Evento Recibido: ","Accion Ejecutada: " };
-
+	char *fsmStates[30] = { "FSM Status:", "Evento Recibido: ","Ultimo Evento Recibido: ","Accion Ejecutada: " };
 	{
 		start_color();
 		init_pair(1, COLOR_WHITE, COLOR_BLACK);
 		init_pair(2, COLOR_BLUE, COLOR_WHITE);
 		init_pair(3, COLOR_GREEN, COLOR_BLACK);
 		init_pair(4, COLOR_GREEN, COLOR_BLACK);
+		init_pair(5, COLOR_GREEN, COLOR_WHITE);
 		immedok(winTest, TRUE);
 	}
 
 	//Se imprime la pantalla inicial que mostrara el estado de la FSM y las teclas correspondientes a los eventos//
 	color_set(2, NULL);
+	move(1, LEFTMARGIN1);
 	printw("Instituto Tecnologico de Buenos Aires");
-	color_set(1, NULL); move(1, 0);
+	color_set(1, NULL);
+	move(2, LEFTMARGIN1);
 	printw("Grupo 4 : Lisando Alvarez, Maria Luz Stewart Harris y Nicolas Mestanza");
-	move(3, 0); color_set(3, NULL);
+	move(4, LEFTMARGIN1); 
+	color_set(3, NULL);
 	printw("Server.exe");
-	move(4, 0);
+	move(5, LEFTMARGIN1);
 	printw("Programa de simulacion de servidor TFTP implementado con FSM");
-	move(6, 0); color_set(1, NULL);
+	move(7, LEFTMARGIN1); 
+	color_set(1, NULL);
 	printw("Cuando el usuario presiona las teclas de eventos entiende que se genero un nuevo evento");
-	move(7, 0);
+	move(8, LEFTMARGIN1);
 	printw("y responde ante ese evento realizando una accion y cambiando el estado.");
-	move(10, 0); color_set(1, NULL);
-	printw("Eventos:"); move(10, 45); printw("Status de la FSM:");
+	move(11, LEFTMARGIN1); 
+	color_set(2, NULL);
+	printw("Eventos:");
+	move(11, LEFTMARGIN2);
+	printw("%s", "FSM Info:");
 	color_set(1, NULL);
 
-	for (int i = 6; i<(12 + 6); i++)
+	for (int i = 0; i < 12; i++)
 	{
-		move(6 + i, 0);
-		printw("%s", Events[i - 6]);
+		move(i + (FIRSTLINE + INTERSPACING), LEFTMARGIN1);
+		printw("%s", Events[i]);
 	}
 
-	for (int i = 6; i<(9); i++)
+	for (int i = 0; i < winTest->_maxx; i++)
 	{
-		move(i * 2, 45);
-		printw("%s", fsmStates[i - 6]);
+		move(FIRSTLINE - 1, i);
+		printw("%c", '*');
+	}
+
+	for (int i = FIRSTLINE; i < winTest->_maxy; i++)
+	{
+		move(i, LEFTMARGIN2 - INTERSPACING);
+		printw("%c", '*');
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		move(FIRSTLINE + 4 + i*INTERSPACING, LEFTMARGIN2);
+		printw("%s", fsmStates[i]);
 	}
 	return;
 }

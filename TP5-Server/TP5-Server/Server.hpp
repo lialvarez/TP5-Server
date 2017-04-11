@@ -6,8 +6,13 @@
 #include <vector>
 #include "curses.h"
 
-using namespace std;
+#define FIRSTLINE 11
+#define INTERSPACING 2
+#define LEFTMARGIN1 1
+#define LEFTMARGIN2 45
+#define LEFTMARGIN3 70
 
+using namespace std;
 
 
 class Server
