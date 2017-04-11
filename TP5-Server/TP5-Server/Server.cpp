@@ -33,6 +33,7 @@ genericEvent* Server::eventGenerator()
 		c = tolower(c);
 		if (c == 27)
 		{
+			receivedEvent = "Server Closed";
 			return ((genericEvent *) new (EV_CloseServer));
 		}
 		switch (c)
